@@ -1,0 +1,8 @@
+This is derivative work of Neil Conway's dataflow_bench,
+which is NOT published under any particular license,
+and also uses D.R.Hanson's libcii, which is MIT licensed.
+
+I would not recommend using this code for any purpose whatsoever;
+it was probably not legal for me to have written it,
+and I'm not giving any kind of permission either.
+

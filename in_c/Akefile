@@ -1,0 +1,20 @@
+bench: bench.c table.o arena.o mem.o except.o
+	gcc -o bench bench.c table.o arena.o mem.o except.o
+
+table.o: table.c mem.h except.h table.h arena.h
+	gcc -c table.c
+
+arena.o: arena.c arena.h
+	gcc -c arena.c
+
+mem.o: mem.c mem.h
+	gcc -c mem.c
+
+except.o: except.c except.h
+	gcc -c except.c
+
+clean:
+	rm -f bench table.o arena.o mem.o except.o
+
+
+
