@@ -1,4 +1,7 @@
+#include <math.h>
 #include <stdio.h>
+#include <time.h>
+
 #include "table.h"
 #include "arena.h"
 
@@ -119,6 +122,10 @@ static int* intdup(Arena_T p, int i) {
   return copy;
 }
 
+static double SEC_PER_NS() {
+  return pow(10.0, -9);
+}
+
 int main() {
   int i;
   
@@ -126,9 +133,10 @@ int main() {
     Arena_T pool;
     struct Op *op;
     int j;
-    // TODO: replace this
-    // apr_time_t start_time;
-    // start_time = apr_time_now();
+    struct timespec start_time, finish_time;
+
+    clock_gettime(CLOCK_MONOTONIC, &start_time);
+
     pool = Arena_new();
     
     op = sink_op_init(pool);
@@ -146,9 +154,13 @@ int main() {
     }
     
     Arena_free(pool);
-    // TODO: replace this
-    // printf("Duration: %" APR_TIME_T_FMT " usec\n",
-    // (apr_time_now() - start_time));
+
+    clock_gettime(CLOCK_MONOTONIC, &finish_time);
+
+    double duration = finish_time.tv_sec - start_time.tv_sec;
+    duration += (finish_time.tv_nsec - start_time.tv_nsec) * SEC_PER_NS();
+
+    printf("Duration: %f seconds\n", duration);
   }
 
   return 0;
