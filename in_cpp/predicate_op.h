@@ -6,12 +6,13 @@
 class PredicateOp : public OpInterface {
  public:
   // Constructor
-  PredicateOp(int predicate, const OpInterface& next);
+  // Precondition: next is not null
+  PredicateOp(int predicate, OpInterface* next);
   void invoke(int) override;
 
  private:
   int predicate_;
-  const OpInterface& next_;
+  OpInterface* next_;
 
 };
 
