@@ -14,15 +14,23 @@ public:
 
 #include <gtest/gtest.h>
 
-TEST(PredicateOpTest, PredicateOpDelegatesToNextIfIncomingIsDifferent) {
-  MockOp next;
-  int some_integer = 4;
-  PredicateOp to_test(some_integer, &next);
-  int some_other_integer = 5;
-  to_test.invoke(some_other_integer);
-  EXPECT_TRUE(next.saw_invoke_);
-  EXPECT_EQ(next.saw_which_, some_other_integer);
+TEST(PredicateOpTest, PredicateOpFiltersOutIntegersEqualToItsPredicate) {
+  for (int i = 0; i < 10; i += 1) {
+    MockOp next;
+    PredicateOp to_test(i, &next);
+    for (int j = 0; j < 10; j += 1) {
+      to_test.invoke(j);
+      if (i == j) {
+	EXPECT_FALSE(next.saw_invoke_);
+      } else {
+	EXPECT_TRUE(next.saw_invoke_);
+	EXPECT_EQ(next.saw_which_, j);
+      }
+      next.saw_invoke_ = false;
+    }
+  }
 }
+
 
 int main(int argc, char* argv[]) {
   testing::InitGoogleTest(&argc, argv);
