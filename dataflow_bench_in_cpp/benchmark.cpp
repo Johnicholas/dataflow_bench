@@ -21,7 +21,9 @@ Benchmark::Benchmark()
 
 void Benchmark::Run() {
   for (int i = 0; i < 2000000; i += 1) {
-    j2.Invoke(i);
+    if (i%2 == 1) {
+      j2.Invoke(i);
+    }
   }
 }
 
