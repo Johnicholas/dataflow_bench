@@ -152,7 +152,7 @@ int main() {
 	op->invoke(op, intdup(pool, j));
       }
     }
-    
+
     Arena_free(pool);
 
     clock_gettime(CLOCK_MONOTONIC, &finish_time);
