@@ -32,10 +32,20 @@ TEST(PredicateOpTest, PredicateOpFiltersOutIntegersEqualToItsPredicate) {
   }
 }
 
-TEST(JoinOpTest, JoinOpCanBeCreatedWithASetOfIntegersAndANextOp) {
+TEST(JoinOpTest, JoinOpFiltersOutIntegersThatAreInItsTable) {
   MockOp next;
-  std::set<int> odds_below_ten = { 1, 3, 5, 7, 9 };
-  JoinOp to_test(odds_below_ten, &next);
+  std::set<int> some_evens_below_ten = { 0, 2, 4, 6, 8 };
+  JoinOp to_test(some_evens_below_ten, &next);
+  for (int i = 0; i < 10; i += 1) {
+    to_test.invoke(i);
+    if (i%2 == 0) {
+      EXPECT_FALSE(next.saw_invoke_);
+    } else {
+      EXPECT_TRUE(next.saw_invoke_);
+      EXPECT_EQ(next.saw_which_, i);
+    }
+    next.saw_invoke_ = false;
+  }
 }
 
 int main(int argc, char* argv[]) {
