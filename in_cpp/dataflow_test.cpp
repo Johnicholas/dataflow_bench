@@ -1,10 +1,17 @@
 #include "op_interface.h"
 #include "predicate_op.h"
 
+class NullOp : public OpInterface {
+public:
+  void invoke(int) override {
+  }
+};
+
 #include <gtest/gtest.h>
 
 TEST(PredicateOpTest, PredicateOpCanBeCreated) {
-  PredicateOp to_test;
+  NullOp next;
+  PredicateOp to_test(4, next);
 }
 
 int main(int argc, char* argv[]) {

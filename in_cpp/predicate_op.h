@@ -5,10 +5,14 @@
 
 class PredicateOp : public OpInterface {
  public:
+  // Constructor
+  PredicateOp(int predicate, const OpInterface& next);
   void invoke(int) override;
 
-  // we need to store the int, right?
-  // and the op?
+ private:
+  int predicate_;
+  const OpInterface& next_;
+
 };
 
 #endif
