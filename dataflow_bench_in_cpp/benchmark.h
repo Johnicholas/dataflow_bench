@@ -10,6 +10,7 @@ class Benchmark {
  public:
   // Constructor
   Benchmark();
+  void Run();
  private:
   SinkOp sink;
   PredicateOp p4;

@@ -4,7 +4,7 @@
 
 class OpInterface {
  public:
-  virtual void invoke(int incoming) = 0;
+  virtual void Invoke(int incoming) = 0;
   // Destructor
   virtual ~OpInterface() {}
  protected:

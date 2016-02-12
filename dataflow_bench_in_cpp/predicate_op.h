@@ -9,7 +9,7 @@ class PredicateOp : public OpInterface {
   // Constructor
   // Precondition: next is not null
   PredicateOp(int predicate, OpInterface* next);
-  void invoke(int incoming) override;
+  void Invoke(int incoming) override;
  private:
   int predicate_;
   OpInterface* next_;

@@ -6,6 +6,6 @@ SinkOp::SinkOp()
   : list_() {
 }
 
-void SinkOp::invoke(int incoming) {
+void SinkOp::Invoke(int incoming) {
   list_.push_back(incoming);
 }

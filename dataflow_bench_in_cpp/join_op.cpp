@@ -4,14 +4,18 @@
 #include <set>
 
 // Constructor
-JoinOp::JoinOp(std::set<int> table, OpInterface* next) :
-  table_(table),
+JoinOp::JoinOp(OpInterface* next) :
+  table_(),
   next_(next) {
   assert(next);
 }
 
-void JoinOp::invoke(int incoming) {
+void JoinOp::Add(int to_add) {
+  table_.insert(to_add);
+}
+
+void JoinOp::Invoke(int incoming) {
   if (table_.count(incoming) == 0) {
-    next_->invoke(incoming);
+    next_->Invoke(incoming);
   }
 }

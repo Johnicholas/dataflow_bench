@@ -9,7 +9,7 @@ class SinkOp : public OpInterface {
  public:
   // Constructor
   SinkOp();
-  void invoke(int incoming) override;
+  void Invoke(int incoming) override;
  private:
   std::list<int> list_;  // terrible name, improve?
 };

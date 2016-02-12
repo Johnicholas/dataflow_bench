@@ -10,9 +10,9 @@ PredicateOp::PredicateOp(int predicate, OpInterface* next)
   assert(next);
 }
 
-void PredicateOp::invoke(int incoming) {
+void PredicateOp::Invoke(int incoming) {
   if (incoming != predicate_) {
-    next_->invoke(incoming);
+    next_->Invoke(incoming);
   }
 }
 
