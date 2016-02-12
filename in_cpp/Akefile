@@ -1,14 +1,17 @@
 default: dataflow_test
 	./dataflow_test
 
-dataflow_test: compile_and_link.sh dataflow_test.cpp predicate_op.h op_interface.h join_op.h predicate_op.o join_op.o
-	bash compile_and_link.sh dataflow_test dataflow_test.cpp predicate_op.o join_op.o -lgtest -lpthread
+dataflow_test: compile_and_link.sh dataflow_test.cpp predicate_op.h op_interface.h join_op.h sink_op.h predicate_op.o join_op.o sink_op.o
+	bash compile_and_link.sh dataflow_test dataflow_test.cpp predicate_op.o join_op.o sink_op.o -lgtest -lpthread
 
 predicate_op.o: compile.sh predicate_op.cpp predicate_op.h
 	bash compile.sh predicate_op.cpp
 
 join_op.o: compile.sh join_op.cpp join_op.h
 	bash compile.sh join_op.cpp
+
+sink_op.o: compile.sh sink_op.cpp sink_op.h
+	bash compile.sh sink_op.cpp
 
 compile.sh: flags.sed compile.template
 	sed -f flags.sed <compile.template >compile.sh

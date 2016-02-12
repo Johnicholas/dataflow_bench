@@ -10,6 +10,7 @@ class JoinOp : public OpInterface {
   // Constructor
   // Precondition: next is not null
   JoinOp(std::set<int> table, OpInterface* next);
+
   void invoke(int) override;
 
  private:

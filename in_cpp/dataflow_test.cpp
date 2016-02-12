@@ -1,6 +1,9 @@
 #include "op_interface.h"
 #include "predicate_op.h"
 #include "join_op.h"
+#include "sink_op.h"
+
+#include <gtest/gtest.h>
 
 class MockOp : public OpInterface {
 public:
@@ -12,8 +15,6 @@ public:
   bool saw_invoke_ = false;
   int saw_which_;
 };
-
-#include <gtest/gtest.h>
 
 TEST(PredicateOpTest, PredicateOpFiltersOutIntegersEqualToItsPredicate) {
   for (int i = 0; i < 10; i += 1) {
@@ -46,6 +47,11 @@ TEST(JoinOpTest, JoinOpFiltersOutIntegersThatAreInItsTable) {
     }
     next.saw_invoke_ = false;
   }
+}
+
+TEST(SinkOpTest, SinkOpCanBeCreated) {
+  std::list<int> some_evens_below_ten = { 0, 2, 4, 6, 8 };
+  SinkOp to_test(some_evens_below_ten);
 }
 
 int main(int argc, char* argv[]) {
