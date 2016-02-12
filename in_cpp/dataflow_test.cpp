@@ -1,5 +1,6 @@
 #include "op_interface.h"
 #include "predicate_op.h"
+#include "join_op.h"
 
 class MockOp : public OpInterface {
 public:
@@ -31,6 +32,11 @@ TEST(PredicateOpTest, PredicateOpFiltersOutIntegersEqualToItsPredicate) {
   }
 }
 
+TEST(JoinOpTest, JoinOpCanBeCreatedWithASetOfIntegersAndANextOp) {
+  MockOp next;
+  std::set<int> odds_below_ten = { 1, 3, 5, 7, 9 };
+  JoinOp to_test(odds_below_ten, &next);
+}
 
 int main(int argc, char* argv[]) {
   testing::InitGoogleTest(&argc, argv);
