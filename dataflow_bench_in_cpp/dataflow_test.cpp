@@ -1,6 +1,5 @@
 // Copyright 2016 IDEXX
 #include <gtest/gtest.h>
-#include <set>
 #include "dataflow_bench_in_cpp/op_interface.h"
 #include "dataflow_bench_in_cpp/predicate_op.h"
 #include "dataflow_bench_in_cpp/join_op.h"

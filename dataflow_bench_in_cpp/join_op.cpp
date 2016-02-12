@@ -1,7 +1,7 @@
 // Copyright 2016 IDEXX
 #include "dataflow_bench_in_cpp/join_op.h"
 #include <cassert>
-#include <set>
+#include <unordered_set>
 
 // Constructor
 JoinOp::JoinOp(OpInterface* next) :
