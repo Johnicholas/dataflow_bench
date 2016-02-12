@@ -1,4 +1,9 @@
-default: dataflow_test
+all: bench test
+
+bench: compile_and_link.sh bench.cpp benchmark.h predicate_op.o join_op.o sink_op.o benchmark.o
+	bash compile_and_link.sh bench bench.cpp predicate_op.o join_op.o sink_op.o benchmark.o -lm
+
+test: dataflow_test
 	./dataflow_test
 
 dataflow_test: compile_and_link.sh dataflow_test.cpp predicate_op.h op_interface.h join_op.h sink_op.h benchmark.h predicate_op.o join_op.o sink_op.o benchmark.o
@@ -23,4 +28,4 @@ compile_and_link.sh: flags.sed compile_and_link.template
 	sed -f flags.sed <compile_and_link.template >compile_and_link.sh
 
 clean:
-	rm -f dataflow_test predicate_op.o join_op.o sink_op.o benchmark.o compile.sh compile_and_link.sh
+	rm -f dataflow_test predicate_op.o join_op.o sink_op.o benchmark.o compile.sh compile_and_link.sh bench
