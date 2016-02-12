@@ -4,6 +4,7 @@
 // Constructor
 SinkOp::SinkOp()
   : list_() {
+  list_.reserve(1000000);
 }
 
 void SinkOp::Invoke(int incoming) {
