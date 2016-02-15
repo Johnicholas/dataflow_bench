@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ IfPredicateIsZero_FiltersOutZero()
+comment1.params=
+comment1.target=void\ IfPredicateIsZero_DelegatesOne()
+comment2.params=
+comment2.target=void\ IfPredicateIsZero_DelegatesTwo()
+comment3.params=
+comment3.target=void\ IfPredicateIsOne_DelegatesZero()
+numComments=4

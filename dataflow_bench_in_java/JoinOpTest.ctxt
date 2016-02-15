@@ -1,0 +1,14 @@
+#BlueJ class context
+comment0.params=
+comment0.target=void\ DelegatesZero()
+comment1.params=
+comment1.target=void\ DelegatesOne()
+comment2.params=
+comment2.target=void\ IfZeroWasAdded_FiltersOutZero()
+comment3.params=
+comment3.target=void\ IfZeroWasAdded_DelegatesOne()
+comment4.params=
+comment4.target=void\ IfZeroWasAdded_DelegatesTwo()
+comment5.params=
+comment5.target=void\ IfOneWasAdded_DelegatesZero()
+numComments=6

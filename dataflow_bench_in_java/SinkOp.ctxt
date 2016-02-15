@@ -1,0 +1,6 @@
+#BlueJ class context
+comment0.params=
+comment0.target=SinkOp()
+comment1.params=incoming
+comment1.target=void\ invoke(int)
+numComments=2

@@ -1,0 +1,8 @@
+#BlueJ class context
+comment0.params=next
+comment0.target=JoinOp(OpInterface)
+comment1.params=to_add
+comment1.target=void\ add(int)
+comment2.params=incoming
+comment2.target=void\ invoke(int)
+numComments=3
